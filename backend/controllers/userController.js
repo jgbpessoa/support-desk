@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 
 // Models
 const User = require("../models/userModel");
+const res = require("express/lib/response");
 
 // Generate Token
 const generateToken = (id) => {
@@ -78,7 +79,16 @@ const loginUser = asyncHandler(async (req, res) => {
   }
 });
 
+// @desc    Get current user data
+// @route   /api/users/me
+// @access  Private
+const getMe = asyncHandler(async (req, res) => {
+  const user = { id: req.user._id, name: req.user.name, email: req.user.email };
+  res.status(200).json(user);
+});
+
 module.exports = {
   registerUser,
   loginUser,
+  getMe,
 };
