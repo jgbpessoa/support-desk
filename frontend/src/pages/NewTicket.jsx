@@ -8,7 +8,9 @@ function NewTicket() {
   const [product, setProduct] = useState("iPhone");
   const [description, setDescription] = useState("");
 
-  const onSubmit = () => {};
+  const onSubmit = (e) => {
+    e.preventDefault();
+  };
 
   return (
     <>
