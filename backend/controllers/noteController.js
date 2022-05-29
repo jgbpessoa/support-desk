@@ -54,7 +54,9 @@ const addNote = asyncHandler(async (req, res) => {
     isStaff: false,
   });
 
-  res.status(200).json(note);
+  if (note) {
+    res.status(200).json(note);
+  }
 });
 
 module.exports = {

@@ -3,7 +3,7 @@ import axios from "axios";
 const API_URL = "/api/tickets/";
 
 // Create ticket note
-const addNote = async (noteData, ticketId, token) => {
+const addNote = async (noteText, ticketId, token) => {
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -12,7 +12,7 @@ const addNote = async (noteData, ticketId, token) => {
 
   const response = await axios.post(
     `${API_URL}/${ticketId}/notes`,
-    noteData,
+    { text: noteText },
     config
   );
 

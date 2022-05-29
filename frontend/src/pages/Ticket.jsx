@@ -4,7 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { getTicket, closeTicket } from "../features/tickets/ticketSlice";
 import {
   getNotes,
-  createNote,
+  addNote,
   reset as notesReset,
 } from "../features/notes/noteSlice";
 import BackButton from "../components/BackButton";
@@ -16,7 +16,8 @@ import { FaPlus } from "react-icons/fa";
 
 const customStyles = {
   content: {
-    width: "600px",
+    width: "80%",
+    maxWidth: "600px",
     top: "50%",
     left: "50%",
     right: "auto",
@@ -73,8 +74,9 @@ function Ticket() {
   // Create note submit
   const onNoteSubmit = (e) => {
     e.preventDefault();
-    // dispatch(createNote(noteText, ticketId));
     console.log("Submit");
+    dispatch(addNote({ noteText, ticketId }));
+    setNoteText("");
     closeModal();
   };
 

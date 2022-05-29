@@ -3,7 +3,6 @@ import noteService from "./noteService";
 
 const initialState = {
   notes: [],
-  note: {},
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -13,10 +12,10 @@ const initialState = {
 // Create tricket note
 export const addNote = createAsyncThunk(
   "notes/create",
-  async (noteData, ticketId, thunkAPI) => {
+  async ({ noteText, ticketId }, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token;
-      return await noteService.addNote(noteData, ticketId, token);
+      return await noteService.addNote(noteText, ticketId, token);
     } catch (error) {
       const message =
         (error.response &&
@@ -64,7 +63,7 @@ export const noteSlice = createSlice({
       .addCase(addNote.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.note = action.payload;
+        state.notes.push(action.payload);
       })
       .addCase(addNote.rejected, (state, action) => {
         state.isLoading = false;
