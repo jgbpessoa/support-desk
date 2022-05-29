@@ -2,14 +2,19 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getTicket, closeTicket } from "../features/tickets/ticketSlice";
-import { getNotes } from "../features/notes/noteSlice";
+import { getNotes, reset as notesReset } from "../features/notes/noteSlice";
 import BackButton from "../components/BackButton";
 import Spinner from "../components/Spinner";
+import NoteItem from "../components/NoteItem";
 import { toast } from "react-toastify";
 
 function Ticket() {
   const { ticket, isLoading, isSuccess, isError, message } = useSelector(
     (state) => state.tickets
+  );
+
+  const { notes, isLoading: notesIsLoading } = useSelector(
+    (state) => state.notes
   );
 
   const dispatch = useDispatch();
@@ -42,7 +47,7 @@ function Ticket() {
     <div className="ticket-page">
       <header className="ticket-header">
         <BackButton url="/tickets" />
-        {isLoading ? (
+        {isLoading || notesIsLoading ? (
           <Spinner />
         ) : (
           <>
@@ -62,6 +67,15 @@ function Ticket() {
               <h3>Description of Issue</h3>
               <p>{ticket.description}</p>
             </div>
+            <h2>Notes</h2>
+            {notes.length === 0 && (
+              <div className="note">
+                <p>You have not sent/received any note.</p>
+              </div>
+            )}
+            {notes.map((note) => (
+              <NoteItem key={note._id} note={note} />
+            ))}
             {ticket.status !== "closed" && (
               <button
                 className="btn btn-block btn-danger"
