@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getTicket, closeTicket } from "../features/tickets/ticketSlice";
+import { getNotes } from "../features/notes/noteSlice";
 import BackButton from "../components/BackButton";
 import Spinner from "../components/Spinner";
 import { toast } from "react-toastify";
@@ -23,6 +24,7 @@ function Ticket() {
     }
 
     dispatch(getTicket(ticketId));
+    dispatch(getNotes(ticketId));
   }, [dispatch, ticketId, isError, message]);
 
   if (isError) {
