@@ -38,6 +38,7 @@ h3 {
 .container {
   width: 100%;
   max-width: 960px;
+  min-width: 320px;
   margin: 0 auto;
   padding: 0 20px;
   text-align: center;
@@ -49,7 +50,7 @@ h3 {
   align-items: center;
   padding: 20px 0;
   border-bottom: 1px solid #e6e6e6;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
 }
 
 .header ul {
@@ -78,7 +79,7 @@ h3 {
 .heading {
   font-size: 2rem;
   font-weight: 700;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   padding: 0 20px;
 }
 
@@ -111,8 +112,9 @@ h3 {
 }
 
 .form {
-  width: 70%;
+  width: 60%;
   margin: 0 auto;
+  padding-bottom: 25px;
 }
 
 .form-group {
@@ -163,7 +165,8 @@ h3 {
 
 .btn-block {
   width: 100%;
-  margin-bottom: 20px;
+  max-width: 220px;
+  margin: 0 auto 20px;
 }
 
 .btn-sm {
@@ -177,7 +180,7 @@ h3 {
 }
 
 .btn-back {
-  width: 150px;
+  width: 120px;
   margin-bottom: 20px;
 }
 
@@ -208,10 +211,18 @@ h3 {
   font-size: 1.3rem;
 }
 
+.tickets {
+  padding-bottom: 25px;
+}
+
+.ticket-header {
+  padding-bottom: 25px;
+}
+
 .ticket,
 .ticket-headings {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   justify-content: space-between;
   align-items: center;
@@ -229,8 +240,8 @@ h3 {
 .status {
   background-color: #333;
   color: #fff;
-  width: 100px;
-  padding: 0 20px;
+  width: 100%;
+  max-width: 100px;
   justify-self: center;
   border-radius: 10px;
   font-size: 16px;
@@ -255,6 +266,12 @@ h3 {
   border-radius: 10px;
 }
 
+.btn-view {
+  grid-column: 1/-1;
+  width: 220px;
+  margin: 0 auto;
+}
+
 .ticket-page {
   position: relative;
   text-align: left;
@@ -264,6 +281,8 @@ h3 {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  word-break: break-all;
+  flex-wrap: wrap;
 }
 
 .ticket-page .btn {
@@ -289,6 +308,7 @@ h3 {
   border-radius: 5px;
   text-align: left;
   padding: 20px;
+  padding-top: 35px;
   margin-bottom: 20px;
   position: relative;
 }
@@ -304,8 +324,8 @@ h3 {
 
 .note-date {
   position: absolute;
-  top: 15px;
-  right: 10px;
+  top: 10px;
+  right: 15px;
   font-size: 14px;
 }
 
@@ -322,8 +342,8 @@ h3 {
   border: none;
   color: #000;
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: 10px;
+  right: 10px;
   font-size: 16px;
   cursor: pointer;
 }
@@ -384,6 +404,30 @@ footer {
   100% {
     transform: rotate(360deg);
   }
+}
+
+@media (min-width: 460px) {
+  .ticket,
+  .ticket-headings {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .note {
+    padding-top: 20px;
+  }
+
+  .btn-view {
+    grid-column: 4/5;
+    width: 100%;
+    max-width: 125px;
+  }
+}
+
+.user-testing {
+  font-size: 14px;
+  font-weight: 400;
+  background-color: rgb(237, 237, 237);
+  padding: 10px;
 }
 
 @media (max-width: 600px) {

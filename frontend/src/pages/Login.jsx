@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { login, reset } from "../features/auth/authSlice";
 import Spinner from "../components/Spinner";
+import UserTesting from "../components/UserTesting";
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -84,6 +85,7 @@ function Login() {
             <button className="btn btn-block">Login</button>
           </div>
         </form>
+        <UserTesting />
       </section>
       {isLoading && <Spinner />}
     </>

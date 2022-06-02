@@ -3,7 +3,7 @@ import { FaQuestionCircle, FaTicketAlt } from "react-icons/fa";
 
 function Home() {
   return (
-    <div>
+    <div style={{ paddingBottom: "20px" }}>
       <section className="heading">
         <h1>What do you need help with?</h1>
         <p>Please choose from an option below:</p>
